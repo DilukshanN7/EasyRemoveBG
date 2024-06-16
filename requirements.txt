@@ -1,0 +1,4 @@
+rembg==1.0.12
+opencv-python==4.5.3.56
+numpy==1.22.3
+Pillow==9.0.1
