@@ -1,12 +1,12 @@
 @echo off
 
-rem Set current directory as source directory
+rem
 set "source_dir=%cd%"
 
-rem Set destination directory
-set "destination_dir=C:\Users\diluk\AppData\Local\Programs\Python\Python312"
+rem
+set "destination_dir=%USERPROFILE%\AppData\Local\Programs\Python\Python312"
 
-rem Move test.py
+rem
 if exist "%source_dir%\test.py" (
     move "%source_dir%\test.py" "%destination_dir%\"
     echo test.py moved to %destination_dir%
@@ -14,7 +14,7 @@ if exist "%source_dir%\test.py" (
     echo test.py not found in %source_dir%
 )
 
-rem Move test2.py
+rem
 if exist "%source_dir%\test2.py" (
     move "%source_dir%\test2.py" "%destination_dir%\"
     echo test2.py moved to %destination_dir%
@@ -22,5 +22,5 @@ if exist "%source_dir%\test2.py" (
     echo test2.py not found in %source_dir%
 )
 
-rem Pause to see any messages before closing the window
+rem
 pause

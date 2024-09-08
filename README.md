@@ -13,6 +13,7 @@ The EasyRemoveBG is a simple application that allows users to remove the backgro
 ## Technologies Used
 
 - **Remove Background:**
+
   - Suitable for normal photos.
   - Uses [Rembg](https://pypi.org/project/rembg/) for background removal.
 
@@ -29,9 +30,11 @@ The EasyRemoveBG is a simple application that allows users to remove the backgro
 ## Setup Instructions
 
 1. **Download or Clone the Repository:**
+
    - Download or clone the repository to your local machine.
 
 2. **Run `first.bat` Script:**
+
    - Double-click on `first.bat` located in the root of the repository to initialize the setup process. This script will prepare the environment and install necessary dependencies.
 
 3. **Import `second.reg` File:**
@@ -45,11 +48,29 @@ By following these instructions, users should be able to easily set up and start
 - Right-click on an image file (e.g., `example.jpg`).
 - Select "Remove Background" or "Remove Logo" from the context menu to process the image.
 
+## How It Works
+
+1. **Read Input Image**:  
+   The script reads the input image and extracts its color channels (RGB).
+
+2. **K-means Clustering**:  
+   The script applies K-means clustering to segment the image into two clusters: foreground and background.
+
+3. **Create a Mask**:  
+   Based on the clustering result, it creates a binary mask to distinguish the foreground from the background.
+
+4. **Apply Alpha Channel**:  
+   An alpha channel is generated from the mask and added to the original image.
+
+5. **Save Output Image**:  
+   The image with the transparent background is saved in the same directory as the input image.
+
 ## Contributing to EasyRemoveBG
 
 ### Logo for Right-Click Menu
 
 #### Logo Requirement:
+
 - We need a logo to represent the EasyRemoveBG in the right-click context menu.
 - The logo should be visually appealing and clear even at smaller sizes.
 - Preferably, provide the logo in vector format (SVG) for scalability.
@@ -61,6 +82,3 @@ By following these instructions, users should be able to easily set up and start
 - If possible, contributors are encouraged to explore integrating both "Remove Logo" and "Remove Background" options into a single right-click menu.
 - Submenus can enhance user experience by organizing functionalities logically.
 - Consider usability and design principles when proposing or implementing this feature.
-
-
-
