@@ -4,10 +4,10 @@ Windows Registry Editor Version 5.00
 @="Remove Background"
 
 [HKEY_CLASSES_ROOT\*\shell\RemoveBG\command]
-@="\"%USERPROFILE%\\AppData\\Local\\Programs\\Python\\Python312\\python.exe\" \"%USERPROFILE%\\AppData\\Local\\Programs\\Python\\Python312\\test.py\" \"%1\""
+@="\"%USERPROFILE%\\AppData\\Local\\Programs\\Python\\Python312\\python.exe\" \"%USERPROFILE%\\AppData\\Local\\Programs\\Python\\Python312\\bg.py\" \"%1\""
 
 [HKEY_CLASSES_ROOT\*\shell\RemoveLogo]
 @="Remove Logo"
 
 [HKEY_CLASSES_ROOT\*\shell\RemoveLogo\command]
-@="\"%USERPROFILE%\\AppData\\Local\\Programs\\Python\\Python312\\python.exe\" \"%USERPROFILE%\\AppData\\Local\\Programs\\Python\\Python312\\test2.py\" \"%1\""
+@="\"%USERPROFILE%\\AppData\\Local\\Programs\\Python\\Python312\\python.exe\" \"%USERPROFILE%\\AppData\\Local\\Programs\\Python\\Python312\\logo.py\" \"%1\""
