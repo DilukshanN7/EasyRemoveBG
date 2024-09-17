@@ -9,17 +9,17 @@ set "destination_dir=%USERPROFILE%\AppData\Local\Programs\Python\Python312"
 rem
 if exist "%source_dir%\bg.py" (
     move "%source_dir%\bg.py" "%destination_dir%\"
-    echo test.py moved to %destination_dir%
+    echo bg.py moved to %destination_dir%
 ) else (
-    echo test.py not found in %source_dir%
+    echo bg.py not found in %source_dir%
 )
 
 rem
 if exist "%source_dir%\logo.py" (
     move "%source_dir%\logo.py" "%destination_dir%\"
-    echo test2.py moved to %destination_dir%
+    echo logo.py moved to %destination_dir%
 ) else (
-    echo test2.py not found in %source_dir%
+    echo logo.py not found in %source_dir%
 )
 
 rem
