@@ -16,6 +16,7 @@ site/
 *.egg-info/
 *.egg
 pip-wheel-metadata/
+installer/Output/
 
 # Test and coverage output
 .coverage
