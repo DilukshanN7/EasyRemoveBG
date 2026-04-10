@@ -1,84 +1,71 @@
 # EasyRemoveBG
 
-## Description
-
-The EasyRemoveBG is a simple application that allows users to remove the background from photos using a right-click context menu option in Windows Explorer.
+EasyRemoveBG is a small Windows-focused utility for removing image backgrounds from photos and logos. It now ships as an installable Python package with a CLI, descriptive helper scripts, and a per-user Windows context-menu installer.
 
 ## Features
 
-- Right-click integration in Windows Explorer for easy access.
-- Background removal functionality using advanced algorithms.
-- Supports various image formats (e.g., PNG, JPEG, WEBP).
+- `remove-bg`: uses `rembg` for general photo background removal
+- `remove-logo`: removes flat or near-flat logo backgrounds with an alpha mask
+- predictable PNG output naming with collision handling
+- per-user Windows Explorer context-menu installation without editing registry paths by hand
+- helper scripts: `remove_background.py` and `remove_logo_background.py`
 
-## Technologies Used
+## Install
 
-- **Remove Background:**
+From the project directory:
 
-  - Suitable for normal photos.
-  - Uses [Rembg](https://pypi.org/project/rembg/) for background removal.
+```bash
+py -m pip install .
+```
 
-- **Remove Logo:**
-  - Recommended for logos and graphics.
-  - Uses [OpenCV](https://opencv.org/) for logo removal, which provides effective handling of shapes and contours.
+To install the Windows Explorer context menu:
 
-## Requirements
+```bash
+py install_context_menu.py
+```
 
-- Windows operating system
-- Python 3.12 or later installed
-- Required Python packages (install using `pip install -r requirements.txt`)
-
-## Setup Instructions
-
-1. **Download or Clone the Repository:**
-
-   - Download or clone the repository to your local machine.
-
-2. **Run `first.bat` Script:**
-
-   - Double-click on `first.bat` located in the root of the repository to initialize the setup process. This script will prepare the environment and install necessary dependencies.
-
-3. **Import `second.reg` File:**
-   - After `first.bat` completes, you can import `second.reg` into the Windows registry to add the right-click context menu options.
-
-By following these instructions, users should be able to easily set up and start using your EasyRemoveBG on their Windows systems.
+The bundled `install_windows.bat` runs both steps for you on Windows.
 
 ## Usage
 
-- Navigate to a folder containing images.
-- Right-click on an image file (e.g., `example.jpg`).
-- Select "Remove Background" or "Remove Logo" from the context menu to process the image.
+```bash
+easyremovebg remove-bg path\to\photo.jpg
+easyremovebg remove-logo path\to\logo.png
+easyremovebg remove-logo path\to\logo.png --tolerance 18
+easyremovebg remove-bg path\to\photo.jpg --output path\to\custom-name.png
+```
 
-## How It Works
+The helper scripts also work directly:
 
-1. **Read Input Image**:  
-   The script reads the input image and extracts its color channels (RGB).
+```bash
+py remove_background.py path\to\photo.jpg
+py remove_logo_background.py path\to\logo.png
+```
 
-2. **K-means Clustering**:  
-   The script applies K-means clustering to segment the image into two clusters: foreground and background.
+## Output Behavior
 
-3. **Create a Mask**:  
-   Based on the clustering result, it creates a binary mask to distinguish the foreground from the background.
+- Output is always written as PNG.
+- Default output names are `<original>_rembg.png` and `<original>_logo.png`.
+- If a target file already exists, the CLI appends `_2`, `_3`, and so on unless `--overwrite` is used.
 
-4. **Apply Alpha Channel**:  
-   An alpha channel is generated from the mask and added to the original image.
+## Windows Context Menu
 
-5. **Save Output Image**:  
-   The image with the transparent background is saved in the same directory as the input image.
+Preferred installation:
 
-## Contributing to EasyRemoveBG
+```bash
+py install_context_menu.py
+```
 
-### Logo for Right-Click Menu
+Removal:
 
-#### Logo Requirement:
+```bash
+py uninstall_context_menu.py
+```
 
-- We need a logo to represent the EasyRemoveBG in the right-click context menu.
-- The logo should be visually appealing and clear even at smaller sizes.
-- Preferably, provide the logo in vector format (SVG) for scalability.
+`windows_context_menu.reg` is kept as a simple fallback if you already installed the package and want a static registry file, but the Python installer is the primary supported path.
 
-### Integration of Submenus
+## Test
 
-#### Integrating Remove Logo and Remove Background:
-
-- If possible, contributors are encouraged to explore integrating both "Remove Logo" and "Remove Background" options into a single right-click menu.
-- Submenus can enhance user experience by organizing functionalities logically.
-- Consider usability and design principles when proposing or implementing this feature.
+```bash
+python3 -m unittest discover -s tests
+```
