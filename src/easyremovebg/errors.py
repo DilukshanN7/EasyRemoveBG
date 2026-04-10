@@ -4,7 +4,3 @@ class EasyRemoveBGError(Exception):
 
 class DependencyError(EasyRemoveBGError):
     """Raised when an optional runtime dependency is missing."""
-
-
-class UnsupportedPlatformError(EasyRemoveBGError):
-    """Raised when a platform-specific operation is not supported."""
