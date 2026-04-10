@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "easyremovebg"
-version = "1.0.0"
-description = "CLI and Windows context-menu utility for removing image backgrounds."
+version = "1.1.0"
+description = "Windows-focused background removal tool with packaged executable distribution."
 readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "MIT" }
@@ -28,6 +28,11 @@ dependencies = [
     "opencv-python-headless>=4.10,<5",
     "numpy>=1.26,<3",
     "Pillow>=10,<12",
+]
+
+[project.optional-dependencies]
+build = [
+    "pyinstaller>=6.10,<7",
 ]
 
 [project.scripts]
